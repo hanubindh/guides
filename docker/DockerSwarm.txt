@@ -1,0 +1,23 @@
+# To init a docker swarm
+docker swarm init --advertise-addr 192.168.56.101
+# To join a docker swarm
+docker swarm join --token <<token>> <<manager-ip>>
+
+# To create a docker service
+docker service create --name <<service-name>> --replicas <<count>> --publish 80:80 <<docker-image>>
+
+# To scale service 
+docker service scale <<service>>=<<count>>
+
+# To remove service
+docker service rm web
+
+
+docker service ps terminal
+docker exec -it terminal.1.9h97oh8wut63a3hl8rgf6nakm /bin/bash
+
+docker node ls
+
+docker inspect --format '{{ .NetworkSettings.IPAddress }}' $container_id
+
+docker node inspect self --format '{{ .Status.Addr  }}'

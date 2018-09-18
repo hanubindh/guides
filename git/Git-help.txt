@@ -1,0 +1,11 @@
+GIT:
+
+# For creating a fresh copy in local, from a remote repo
+1. mkdir <<proj_dir>>
+2. cd <<proj_dir>>
+3. git init
+4. If not already configured
+	a. git config --global user.name "<<user_name>>"
+	b. git config --global user.email "<<user_email>>"
+5. git remote add origin <<https://github.com/account/repo_name.git>>
+6. git pull origin master
