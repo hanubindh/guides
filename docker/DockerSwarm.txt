@@ -21,3 +21,296 @@ docker node ls
 docker inspect --format '{{ .NetworkSettings.IPAddress }}' $container_id
 
 docker node inspect self --format '{{ .Status.Addr  }}'
+
+----------------------------------------------------------------------------------------------------------------------------
+
+Usage:	docker service COMMAND
+
+Manage services
+
+Options:
+
+
+Commands:
+  create      Create a new service
+  inspect     Display detailed information on one or more services
+  logs        Fetch the logs of a service or task
+  ls          List services
+  ps          List the tasks of one or more services
+  rm          Remove one or more services
+  rollback    Revert changes to a service's configuration
+  scale       Scale one or multiple replicated services
+  update      Update a service
+
+Run 'docker service COMMAND --help' for more information on a command.
+
+
+----------------------------------------------------------------------------------------------------------------------------
+
+
+Usage:	docker service create [OPTIONS] IMAGE [COMMAND] [ARG...]
+
+Create a new service
+
+Options:
+      --config config                      Specify configurations to expose to the service
+      --constraint list                    Placement constraints
+      --container-label list               Container labels
+      --credential-spec credential-spec    Credential spec for managed service account (Windows only)
+  -d, --detach                             Exit immediately instead of waiting for the service to
+                                           converge
+      --dns list                           Set custom DNS servers
+      --dns-option list                    Set DNS options
+      --dns-search list                    Set custom DNS search domains
+      --endpoint-mode string               Endpoint mode (vip or dnsrr) (default "vip")
+      --entrypoint command                 Overwrite the default ENTRYPOINT of the image
+  -e, --env list                           Set environment variables
+      --env-file list                      Read in a file of environment variables
+      --generic-resource list              User defined resources
+      --group list                         Set one or more supplementary user groups for the container
+      --health-cmd string                  Command to run to check health
+      --health-interval duration           Time between running the check (ms|s|m|h)
+      --health-retries int                 Consecutive failures needed to report unhealthy
+      --health-start-period duration       Start period for the container to initialize before
+                                           counting retries towards unstable (ms|s|m|h)
+      --health-timeout duration            Maximum time to allow one check to run (ms|s|m|h)
+      --host list                          Set one or more custom host-to-IP mappings (host:ip)
+      --hostname string                    Container hostname
+      --isolation string                   Service container isolation mode
+  -l, --label list                         Service labels
+      --limit-cpu decimal                  Limit CPUs
+      --limit-memory bytes                 Limit Memory
+      --log-driver string                  Logging driver for service
+      --log-opt list                       Logging driver options
+      --mode string                        Service mode (replicated or global) (default "replicated")
+      --mount mount                        Attach a filesystem mount to the service
+      --name string                        Service name
+      --network network                    Network attachments
+      --no-healthcheck                     Disable any container-specified HEALTHCHECK
+      --no-resolve-image                   Do not query the registry to resolve image digest and
+                                           supported platforms
+      --placement-pref pref                Add a placement preference
+  -p, --publish port                       Publish a port as a node port
+  -q, --quiet                              Suppress progress output
+      --read-only                          Mount the container's root filesystem as read only
+      --replicas uint                      Number of tasks
+      --reserve-cpu decimal                Reserve CPUs
+      --reserve-memory bytes               Reserve Memory
+      --restart-condition string           Restart when condition is met
+                                           ("none"|"on-failure"|"any") (default "any")
+      --restart-delay duration             Delay between restart attempts (ns|us|ms|s|m|h)
+                                           (default 5s)
+      --restart-max-attempts uint          Maximum number of restarts before giving up
+      --restart-window duration            Window used to evaluate the restart policy (ns|us|ms|s|m|h)
+      --rollback-delay duration            Delay between task rollbacks (ns|us|ms|s|m|h) (default 0s)
+      --rollback-failure-action string     Action on rollback failure ("pause"|"continue")
+                                           (default "pause")
+      --rollback-max-failure-ratio float   Failure rate to tolerate during a rollback (default 0)
+      --rollback-monitor duration          Duration after each task rollback to monitor for
+                                           failure (ns|us|ms|s|m|h) (default 5s)
+      --rollback-order string              Rollback order ("start-first"|"stop-first") (default
+                                           "stop-first")
+      --rollback-parallelism uint          Maximum number of tasks rolled back simultaneously (0
+                                           to roll back all at once) (default 1)
+      --secret secret                      Specify secrets to expose to the service
+      --stop-grace-period duration         Time to wait before force killing a container
+                                           (ns|us|ms|s|m|h) (default 10s)
+      --stop-signal string                 Signal to stop the container
+  -t, --tty                                Allocate a pseudo-TTY
+      --update-delay duration              Delay between updates (ns|us|ms|s|m|h) (default 0s)
+      --update-failure-action string       Action on update failure
+                                           ("pause"|"continue"|"rollback") (default "pause")
+      --update-max-failure-ratio float     Failure rate to tolerate during an update (default 0)
+      --update-monitor duration            Duration after each task update to monitor for failure
+                                           (ns|us|ms|s|m|h) (default 5s)
+      --update-order string                Update order ("start-first"|"stop-first") (default
+                                           "stop-first")
+      --update-parallelism uint            Maximum number of tasks updated simultaneously (0 to
+                                           update all at once) (default 1)
+  -u, --user string                        Username or UID (format: <name|uid>[:<group|gid>])
+      --with-registry-auth                 Send registry authentication details to swarm agents
+  -w, --workdir string                     Working directory inside the container
+  
+----------------------------------------------------------------------------------------------------------------------------
+ 
+  
+Usage:	docker service inspect [OPTIONS] SERVICE [SERVICE...]
+
+Display detailed information on one or more services
+
+Options:
+  -f, --format string   Format the output using the given Go template
+      --pretty          Print the information in a human friendly format
+      
+----------------------------------------------------------------------------------------------------------------------------
+
+Usage:	docker service logs [OPTIONS] SERVICE|TASK
+
+Fetch the logs of a service or task
+
+Options:
+      --details        Show extra details provided to logs
+  -f, --follow         Follow log output
+      --no-resolve     Do not map IDs to Names in output
+      --no-task-ids    Do not include task IDs in output
+      --no-trunc       Do not truncate output
+      --raw            Do not neatly format logs
+      --since string   Show logs since timestamp (e.g. 2013-01-02T13:23:37) or relative (e.g. 42m
+                       for 42 minutes)
+      --tail string    Number of lines to show from the end of the logs (default "all")
+  -t, --timestamps     Show timestamps
+
+----------------------------------------------------------------------------------------------------------------------------
+
+Usage:	docker service ls [OPTIONS]
+
+List services
+
+Aliases:
+  ls, list
+
+Options:
+  -f, --filter filter   Filter output based on conditions provided
+      --format string   Pretty-print services using a Go template
+  -q, --quiet           Only display IDs
+  
+----------------------------------------------------------------------------------------------------------------------------
+
+Usage:	docker service ps [OPTIONS] SERVICE [SERVICE...]
+
+List the tasks of one or more services
+
+Options:
+  -f, --filter filter   Filter output based on conditions provided
+      --format string   Pretty-print tasks using a Go template
+      --no-resolve      Do not map IDs to Names
+      --no-trunc        Do not truncate output
+  -q, --quiet           Only display task IDs
+ 
+----------------------------------------------------------------------------------------------------------------------------
+
+Usage:	docker service rm SERVICE [SERVICE...]
+
+Remove one or more services
+
+Aliases:
+  rm, remove
+
+----------------------------------------------------------------------------------------------------------------------------
+
+
+Usage:	docker service rollback [OPTIONS] SERVICE
+
+Revert changes to a service's configuration
+
+Options:
+  -d, --detach   Exit immediately instead of waiting for the service to converge
+  -q, --quiet    Suppress progress output
+
+----------------------------------------------------------------------------------------------------------------------------
+
+
+Usage:	docker service scale SERVICE=REPLICAS [SERVICE=REPLICAS...]
+
+Scale one or multiple replicated services
+
+Options:
+  -d, --detach   Exit immediately instead of waiting for the service to converge
+  
+----------------------------------------------------------------------------------------------------------------------------
+
+
+Usage:	docker service update [OPTIONS] SERVICE
+
+Update a service
+
+Options:
+      --args command                       Service command args
+      --config-add config                  Add or update a config file on a service
+      --config-rm list                     Remove a configuration file
+      --constraint-add list                Add or update a placement constraint
+      --constraint-rm list                 Remove a constraint
+      --container-label-add list           Add or update a container label
+      --container-label-rm list            Remove a container label by its key
+      --credential-spec credential-spec    Credential spec for managed service account (Windows only)
+  -d, --detach                             Exit immediately instead of waiting for the service to
+                                           converge
+      --dns-add list                       Add or update a custom DNS server
+      --dns-option-add list                Add or update a DNS option
+      --dns-option-rm list                 Remove a DNS option
+      --dns-rm list                        Remove a custom DNS server
+      --dns-search-add list                Add or update a custom DNS search domain
+      --dns-search-rm list                 Remove a DNS search domain
+      --endpoint-mode string               Endpoint mode (vip or dnsrr)
+      --entrypoint command                 Overwrite the default ENTRYPOINT of the image
+      --env-add list                       Add or update an environment variable
+      --env-rm list                        Remove an environment variable
+      --force                              Force update even if no changes require it
+      --generic-resource-add list          Add a Generic resource
+      --generic-resource-rm list           Remove a Generic resource
+      --group-add list                     Add an additional supplementary user group to the container
+      --group-rm list                      Remove a previously added supplementary user group
+                                           from the container
+      --health-cmd string                  Command to run to check health
+      --health-interval duration           Time between running the check (ms|s|m|h)
+      --health-retries int                 Consecutive failures needed to report unhealthy
+      --health-start-period duration       Start period for the container to initialize before
+                                           counting retries towards unstable (ms|s|m|h)
+      --health-timeout duration            Maximum time to allow one check to run (ms|s|m|h)
+      --host-add list                      Add a custom host-to-IP mapping (host:ip)
+      --host-rm list                       Remove a custom host-to-IP mapping (host:ip)
+      --hostname string                    Container hostname
+      --image string                       Service image tag
+      --isolation string                   Service container isolation mode
+      --label-add list                     Add or update a service label
+      --label-rm list                      Remove a label by its key
+      --limit-cpu decimal                  Limit CPUs
+      --limit-memory bytes                 Limit Memory
+      --log-driver string                  Logging driver for service
+      --log-opt list                       Logging driver options
+      --mount-add mount                    Add or update a mount on a service
+      --mount-rm list                      Remove a mount by its target path
+      --network-add network                Add a network
+      --network-rm list                    Remove a network
+      --no-healthcheck                     Disable any container-specified HEALTHCHECK
+      --no-resolve-image                   Do not query the registry to resolve image digest and
+                                           supported platforms
+      --placement-pref-add pref            Add a placement preference
+      --placement-pref-rm pref             Remove a placement preference
+      --publish-add port                   Add or update a published port
+      --publish-rm port                    Remove a published port by its target port
+  -q, --quiet                              Suppress progress output
+      --read-only                          Mount the container's root filesystem as read only
+      --replicas uint                      Number of tasks
+      --reserve-cpu decimal                Reserve CPUs
+      --reserve-memory bytes               Reserve Memory
+      --restart-condition string           Restart when condition is met ("none"|"on-failure"|"any")
+      --restart-delay duration             Delay between restart attempts (ns|us|ms|s|m|h)
+      --restart-max-attempts uint          Maximum number of restarts before giving up
+      --restart-window duration            Window used to evaluate the restart policy (ns|us|ms|s|m|h)
+      --rollback                           Rollback to previous specification
+      --rollback-delay duration            Delay between task rollbacks (ns|us|ms|s|m|h)
+      --rollback-failure-action string     Action on rollback failure ("pause"|"continue")
+      --rollback-max-failure-ratio float   Failure rate to tolerate during a rollback
+      --rollback-monitor duration          Duration after each task rollback to monitor for
+                                           failure (ns|us|ms|s|m|h)
+      --rollback-order string              Rollback order ("start-first"|"stop-first")
+      --rollback-parallelism uint          Maximum number of tasks rolled back simultaneously (0
+                                           to roll back all at once)
+      --secret-add secret                  Add or update a secret on a service
+      --secret-rm list                     Remove a secret
+      --stop-grace-period duration         Time to wait before force killing a container
+                                           (ns|us|ms|s|m|h)
+      --stop-signal string                 Signal to stop the container
+  -t, --tty                                Allocate a pseudo-TTY
+      --update-delay duration              Delay between updates (ns|us|ms|s|m|h)
+      --update-failure-action string       Action on update failure ("pause"|"continue"|"rollback")
+      --update-max-failure-ratio float     Failure rate to tolerate during an update
+      --update-monitor duration            Duration after each task update to monitor for failure
+                                           (ns|us|ms|s|m|h)
+      --update-order string                Update order ("start-first"|"stop-first")
+      --update-parallelism uint            Maximum number of tasks updated simultaneously (0 to
+                                           update all at once)
+  -u, --user string                        Username or UID (format: <name|uid>[:<group|gid>])
+      --with-registry-auth                 Send registry authentication details to swarm agents
+  -w, --workdir string                     Working directory inside the container
