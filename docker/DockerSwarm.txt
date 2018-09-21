@@ -12,11 +12,17 @@ docker service scale <<service>>=<<count>>
 # To remove service
 docker service rm web
 
+# To list nodes in swarm
+docker node ls
+
+# To get details about a service
+docker service ps <<service-name>>
+
 
 docker service ps terminal
 docker exec -it terminal.1.9h97oh8wut63a3hl8rgf6nakm /bin/bash
 
-docker node ls
+
 
 docker inspect --format '{{ .NetworkSettings.IPAddress }}' $container_id
 
