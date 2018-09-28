@@ -9,3 +9,8 @@ GIT:
 	b. git config --global user.email "<<user_email>>"
 5. git remote add origin <<https://github.com/account/repo_name.git>>
 6. git pull origin master
+
+
+Checkout specific files:
+git fetch
+git checkout origin/master -- path/to/file
