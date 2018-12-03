@@ -7,6 +7,7 @@ GIT:
 4. If not already configured
 	a. git config --global user.name "<<user_name>>"
 	b. git config --global user.email "<<user_email>>"
+    4.1 Verify config  "git config --global --list"
 5. git remote add origin <<https://github.com/account/repo_name.git>>
 6. git pull origin master
 
