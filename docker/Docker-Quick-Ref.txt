@@ -1,2 +1,8 @@
 To run a interactive shell with Docker instance
 docker run -it <image> /bin/bash
+
+Install JDK
+apk add openjdk8
+
+Install maven
+apk add maven
