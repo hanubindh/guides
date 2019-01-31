@@ -16,5 +16,7 @@ git fetch
 git checkout origin/master -- path/to/file
 
 To force local with remote:
-git fetch origin --prune
+git reset --hard HEAD
+git clean -f -d
+git pull
 
