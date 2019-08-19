@@ -1,0 +1,5 @@
+Azure Powershell:
+
+1. Example to query available VM types in a region
+Get-AzComputeResourceSku | where {$_.Locations -icontains "CentralIndia" -and $_.ResourceType -icontains "virtualMachines" -and $_.Restrictions.ReasonCode -ne 'NotAvailableForSubscription’}
+
