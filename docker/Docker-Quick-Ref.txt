@@ -6,3 +6,6 @@ apk add openjdk8
 
 Install maven
 apk add maven
+
+To run a command on a existing container:
+docker exec -it <container_id_or_name> echo "I'm inside the container!"
